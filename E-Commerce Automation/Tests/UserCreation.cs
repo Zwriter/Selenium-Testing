@@ -2,12 +2,6 @@ using System.ComponentModel;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
-public enum Gender
-{
-    Male,
-    Female
-}
-
 public class UserCreation
 {
     private IWebDriver _driver;

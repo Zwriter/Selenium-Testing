@@ -13,11 +13,11 @@ public class TestClass : BaseTest
     {
         _registerUser = new UserCreation(
             driver,
-            Gender.Male,
-            TestData.FIRST_NAME,
-            TestData.LAST_NAME,
-            TestData.EMAIL,
-            TestData.PASSWORD
+            UserData.GENDER,
+            UserData.FIRST_NAME,
+            UserData.LAST_NAME,
+            UserData.EMAIL,
+            UserData.PASSWORD
         );
 
         _registerUser.Navigate();
@@ -29,8 +29,8 @@ public class TestClass : BaseTest
     {
         _userLogIn = new UserLogIn(
             driver,
-            TestData.EMAIL,
-            TestData.PASSWORD
+            UserData.EMAIL,
+            UserData.PASSWORD
         );
 
         _userLogIn.Navigate();
