@@ -42,6 +42,7 @@ public class UserCreation
 
         string resultText = _driver.FindElement(By.ClassName("result")).Text;
         Assert.That(resultText, Is.EqualTo("Your registration completed"));
+        Console.WriteLine("TASK_COMPLETED:: User registration succsedded");
 
         _driver.FindElement(By.CssSelector("input[class='button-1 register-continue-button']")).Click();
     }

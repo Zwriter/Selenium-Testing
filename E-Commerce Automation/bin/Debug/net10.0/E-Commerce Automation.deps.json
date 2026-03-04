@@ -8,13 +8,26 @@
     ".NETCoreApp,Version=v10.0": {
       "E-Commerce Automation/1.0.0": {
         "dependencies": {
+          "DotNetSeleniumExtras.WaitHelpers": "3.11.0",
           "Microsoft.NET.Test.Sdk": "18.0.1",
           "NUnit": "4.5.0",
           "NUnit3TestAdapter": "6.1.0",
+          "Selenium.Support": "4.41.0",
           "Selenium.WebDriver": "4.41.0"
         },
         "runtime": {
           "E-Commerce Automation.dll": {}
+        }
+      },
+      "DotNetSeleniumExtras.WaitHelpers/3.11.0": {
+        "dependencies": {
+          "Selenium.WebDriver": "4.41.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SeleniumExtras.WaitHelpers.dll": {
+            "assemblyVersion": "3.11.0.0",
+            "fileVersion": "3.11.0.0"
+          }
         }
       },
       "Microsoft.ApplicationInsights/2.23.0": {
@@ -578,6 +591,17 @@
           "Microsoft.Testing.Platform.MSBuild": "2.0.2"
         }
       },
+      "Selenium.Support/4.41.0": {
+        "dependencies": {
+          "Selenium.WebDriver": "4.41.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/WebDriver.Support.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
       "Selenium.WebDriver/4.41.0": {
         "runtime": {
           "lib/net8.0/WebDriver.dll": {
@@ -610,6 +634,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "DotNetSeleniumExtras.WaitHelpers/3.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xc6jVVl5ymgk3ZNWnC/KHxkEup1QpnwYbrwF+NQoCOGERsD8YMlLwmsX4lGhLXCLo/YQTRTIwlKCN9E/doGUNg==",
+      "path": "dotnetseleniumextras.waithelpers/3.11.0",
+      "hashPath": "dotnetseleniumextras.waithelpers.3.11.0.nupkg.sha512"
     },
     "Microsoft.ApplicationInsights/2.23.0": {
       "type": "package",
@@ -708,6 +739,13 @@
       "sha512": "sha512-H4zRIkiGyPa7RpApzXwan5vpZzu4ZDIzuKNlHFiDjOt5Irq4Y5j8r1SA7Oeo0yFCUyfiY7Jy2DTl8RnFZwpKNA==",
       "path": "nunit3testadapter/6.1.0",
       "hashPath": "nunit3testadapter.6.1.0.nupkg.sha512"
+    },
+    "Selenium.Support/4.41.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZKUuiHuJKUV/7uC1eF81zSb8w2RA+JlkC1/yeM99XAa3Q8a2PgyHVA2MH9FHzufGO3nJXUe0RIx2wbBdVDgioA==",
+      "path": "selenium.support/4.41.0",
+      "hashPath": "selenium.support.4.41.0.nupkg.sha512"
     },
     "Selenium.WebDriver/4.41.0": {
       "type": "package",

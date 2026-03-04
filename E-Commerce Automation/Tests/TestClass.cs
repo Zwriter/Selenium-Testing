@@ -4,9 +4,11 @@ using NUnit.Framework.Internal;
 [TestFixture]
 public class TestClass : BaseTest
 {
-    public UserCreation? _registerUser;
-    public UserLogIn? _userLogIn;
-    public ProductBrowsing? _productBrowsing;
+    private UserCreation? _registerUser;
+    private UserLogIn? _userLogIn;
+    private ProductBrowsing? _productBrowsing;
+    private ShoppingCart? _shoppingChartVerifications;
+    private Checkout? _checkout;
 
     [Test]
     public void RegisterTest()
@@ -40,9 +42,23 @@ public class TestClass : BaseTest
     [Test]
     public void BrowsingTest()
     {
-        //LoginTest();
+        LoginTest();
 
         _productBrowsing = new(driver);
-        _productBrowsing.Navigate();
+        _shoppingChartVerifications = new(driver);
+        _checkout = new(driver);
+
+        _productBrowsing.Test();
+
+        Console.WriteLine("========================================");
+
+        _shoppingChartVerifications.Navigate();
+        _shoppingChartVerifications.Verify();
+
+        Console.WriteLine("========================================");
+
+        _checkout.Test();
+
+        Console.WriteLine("========================================");
     }
 }

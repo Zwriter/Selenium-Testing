@@ -31,6 +31,6 @@ public class UserLogIn
         //Validation
         var checkEmail = _driver.FindElement(By.CssSelector("a[href='/customer/info']")).Text;
         Assert.That(checkEmail, Is.EqualTo(_email));
-        Console.WriteLine($"Log In successful for {_email}");
+        Console.WriteLine($"TASK_COMPLETED:: User Log In successful for {_email}");
     }
 }

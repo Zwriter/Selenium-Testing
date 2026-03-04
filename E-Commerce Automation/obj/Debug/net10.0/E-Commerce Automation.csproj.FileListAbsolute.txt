@@ -176,3 +176,6 @@ D:\Programming\Coding\C#\SeleniumTesting\E-Commerce Automation\bin\Debug\net10.0
 D:\Programming\Coding\C#\SeleniumTesting\E-Commerce Automation\bin\Debug\net10.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
 D:\Programming\Coding\C#\SeleniumTesting\E-Commerce Automation\obj\Debug\net10.0\E-Commerce Automation.gentestingplatformentrypointinputcache.cache
 D:\Programming\Coding\C#\SeleniumTesting\E-Commerce Automation\obj\Debug\net10.0\E-Commerce Automation.genautoregisteredextensionsinputcache.cache
+D:\Programming\Coding\C#\SeleniumTesting\E-Commerce Automation\bin\Debug\net10.0\SeleniumExtras.WaitHelpers.dll
+D:\Programming\Coding\C#\SeleniumTesting\E-Commerce Automation\obj\Debug\net10.0\E-Commerce Automation.sourcelink.json
+D:\Programming\Coding\C#\SeleniumTesting\E-Commerce Automation\bin\Debug\net10.0\WebDriver.Support.dll
