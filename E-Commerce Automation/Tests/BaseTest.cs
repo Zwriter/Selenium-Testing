@@ -18,19 +18,34 @@ public class BaseTest
         driver.Manage().Window.Maximize();
     }
 
-    //[OneTimeTearDown]
+    [OneTimeTearDown]
     public void Close()
     {
-        driver!.Navigate().GoToUrl("https://demowebshop.tricentis.com/cart");
+        try
+        {
+            string cartText = driver!.FindElement(By.ClassName("cart-qty")).Text;
+            int cartValue = Int32.Parse(cartText.Replace("(", "").Replace(")", "").Trim());
 
-        ((IJavaScriptExecutor)driver).ExecuteScript(@"
-            var inputs = document.querySelectorAll('.qty-input');
-            if(inputs.length > 0) {
-                inputs.forEach(i => i.value = '0');
-                document.querySelector('[name=""updatecart""]').click();
+            if (cartValue > 0)
+            {
+                driver.Navigate().GoToUrl("https://demowebshop.tricentis.com/cart");
+                ((IJavaScriptExecutor)driver).ExecuteScript(@"
+                var inputs = document.querySelectorAll('.qty-input');
+                if(inputs.length > 0) {
+                    inputs.forEach(i => i.value = '0');
+                    document.querySelector('[name=""updatecart""]').click();
+                }
+            ");
+                Console.WriteLine("TASK_COMPLETED:: Cleared remaining items");
             }
-        ");
-
-        driver.Quit();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"TearDown warning: {e.Message}");
+        }
+        finally
+        {
+            driver?.Quit();
+        }
     }
 }

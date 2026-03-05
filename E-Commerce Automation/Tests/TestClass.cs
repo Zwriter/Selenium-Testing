@@ -9,6 +9,7 @@ public class TestClass : BaseTest
     private ProductBrowsing? _productBrowsing;
     private ShoppingCart? _shoppingChartVerifications;
     private Checkout? _checkout;
+    private PostOrder? _postOrderVerif;
 
     [Test]
     public void RegisterTest()
@@ -64,8 +65,19 @@ public class TestClass : BaseTest
     public void CheckoutTest()
     {
         CartTest();
+
         Console.WriteLine("========================================");
         _checkout = new(driver);
         _checkout.Test();
+    }
+
+    [Test]
+    public void PostOrderTest()
+    {
+        CheckoutTest();
+
+        Console.WriteLine("========================================");
+        _postOrderVerif = new(driver);
+        _postOrderVerif.Test();
     }
 }
