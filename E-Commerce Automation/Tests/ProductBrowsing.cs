@@ -18,7 +18,7 @@ public class ProductBrowsing
     public void Test()
     {
         AddFictionBook();
-        AddSimpleComputer();
+        AddComputer();
         AddBlueJeans();
     }
 
@@ -52,7 +52,7 @@ public class ProductBrowsing
         Console.WriteLine("TASK_COMPLETED:: Fiction book added to cart");
     }
 
-    private void AddSimpleComputer()
+    private void AddComputer()
     {
         var computersMenu = _wait.Until(ExpectedConditions.ElementToBeClickable(
             By.CssSelector("a[href='/computers']")));

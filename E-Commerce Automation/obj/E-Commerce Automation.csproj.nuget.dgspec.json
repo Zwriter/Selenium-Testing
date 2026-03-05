@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Programming\\Coding\\C#\\SeleniumTesting\\E-Commerce Automation\\E-Commerce Automation.csproj": {}
+    "D:\\Programming\\Coding\\C#\\SeleniumTesting\\E-Commerce Automation\\E-Commerce Automation.csproj": {}
   },
   "projects": {
-    "d:\\Programming\\Coding\\C#\\SeleniumTesting\\E-Commerce Automation\\E-Commerce Automation.csproj": {
+    "D:\\Programming\\Coding\\C#\\SeleniumTesting\\E-Commerce Automation\\E-Commerce Automation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Programming\\Coding\\C#\\SeleniumTesting\\E-Commerce Automation\\E-Commerce Automation.csproj",
+        "projectUniqueName": "D:\\Programming\\Coding\\C#\\SeleniumTesting\\E-Commerce Automation\\E-Commerce Automation.csproj",
         "projectName": "E-Commerce Automation",
-        "projectPath": "d:\\Programming\\Coding\\C#\\SeleniumTesting\\E-Commerce Automation\\E-Commerce Automation.csproj",
+        "projectPath": "D:\\Programming\\Coding\\C#\\SeleniumTesting\\E-Commerce Automation\\E-Commerce Automation.csproj",
         "packagesPath": "C:\\Users\\serba\\.nuget\\packages\\",
-        "outputPath": "d:\\Programming\\Coding\\C#\\SeleniumTesting\\E-Commerce Automation\\obj\\",
+        "outputPath": "D:\\Programming\\Coding\\C#\\SeleniumTesting\\E-Commerce Automation\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

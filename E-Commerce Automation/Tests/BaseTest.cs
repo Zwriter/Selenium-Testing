@@ -31,6 +31,6 @@ public class BaseTest
             }
         ");
 
-        //driver.Quit();
+        driver.Quit();
     }
 }

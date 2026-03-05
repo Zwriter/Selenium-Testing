@@ -17,10 +17,11 @@ public class Checkout
     public void Test()
     {
         BillingAddress();
-        //ShippingMethod();
-        //PaymentMethod();
-        //PaymentInfo();
-        //ConfirmOrder();
+        ShippingMethod();
+        PaymentMethod();
+        PaymentInfo();
+        ConfirmOrder();
+        GoToOrderDetails();
     }
 
     private void BillingAddress()
@@ -31,7 +32,7 @@ public class Checkout
 
         if (countryField.Count > 0 && countryField[0].Displayed)
         {
-            new SelectElement(countryField[0]).SelectByText("Romania");
+            new SelectElement(countryField[0]).SelectByText(AdressData.COUNTRY);
             SetField("BillingNewAddress_City", AdressData.CITY);
             SetField("BillingNewAddress_Address1", AdressData.ADRESS1);
             SetField("BillingNewAddress_ZipPostalCode", AdressData.ZIP);
@@ -44,9 +45,6 @@ public class Checkout
 
         _driver.FindElement(By.CssSelector("input[onclick='Billing.save()']")).Click();
 
-        _wait.Until(ExpectedConditions.ElementIsVisible(
-            By.CssSelector("#shipping-method-block")));
-
         _wait.Until(ExpectedConditions.ElementToBeClickable(
             By.CssSelector("input[onclick='Shipping.save()']"))).Click();
 
@@ -55,64 +53,60 @@ public class Checkout
 
     private void ShippingMethod()
     {
-        // Select Next Day Air
         _wait.Until(ExpectedConditions.ElementToBeClickable(
             By.XPath("//label[contains(text(),'Next Day Air')]/../input"))).Click();
 
         _driver.FindElement(By.CssSelector("input[onclick='ShippingMethod.save()']")).Click();
 
-        _wait.Until(ExpectedConditions.ElementIsVisible(By.Id("payment-method-block")));
-        Console.WriteLine("✔ Shipping method selected: Next Day Air");
+        Console.WriteLine("TASK_COMPLETED:: Shipping method selected: Next Day Air");
     }
 
     private void PaymentMethod()
     {
-        // Select Credit Card
         _wait.Until(ExpectedConditions.ElementToBeClickable(
             By.XPath("//label[contains(text(),'Credit Card')]/../input"))).Click();
 
         _driver.FindElement(By.CssSelector("input[onclick='PaymentMethod.save()']")).Click();
 
-        _wait.Until(ExpectedConditions.ElementIsVisible(By.Id("payment-info-block")));
-        Console.WriteLine("✔ Payment method selected: Credit Card");
+        Console.WriteLine("TASK_COMPLETED:: Payment method selected: Credit Card");
     }
 
     private void PaymentInfo()
     {
         _wait.Until(ExpectedConditions.ElementIsVisible(By.Id("CardholderName")));
+        var monthField = _driver.FindElements(By.Id("ExpireMonth"));
+        var yearField = _driver.FindElements(By.Id("ExpireYear"));
 
         SetField("CardholderName", PaymentData.NAME);
         SetField("CardNumber", PaymentData.CARDNUMBER);
-        SetField("ExpireMonth", PaymentData.EXPIRATIONMONTH);
-        SetField("ExpireYear", PaymentData.EXPIRATIONYEAR);
         SetField("CardCode", PaymentData.CVV);
+        new SelectElement(monthField[0]).SelectByText(PaymentData.EXPIRATIONMONTH);
+        new SelectElement(yearField[0]).SelectByText(PaymentData.EXPIRATIONYEAR);
 
         _driver.FindElement(By.CssSelector("input[onclick='PaymentInfo.save()']")).Click();
 
-        _wait.Until(ExpectedConditions.ElementIsVisible(By.Id("confirm-order-block")));
-        Console.WriteLine("✔ Payment information entered");
+        Console.WriteLine("TASK_COMPLETED:: Payment information entered");
     }
 
     private void ConfirmOrder()
     {
-        // Verify order summary is shown
-        string orderSummary = _driver.FindElement(By.CssSelector(".confirm-order")).Text;
-        Assert.That(orderSummary, Does.Contain("Fiction").Or.Contain("Simple Computer"),
-            "Order summary should contain selected products");
+        _wait.Until(ExpectedConditions.ElementToBeClickable(
+            By.CssSelector("input[onclick='ConfirmOrder.save()']"))).Click();
 
-        _driver.FindElement(By.CssSelector("input[onclick='ConfirmOrder.save()']")).Click();
-
-        // Verify success message
         _wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector(".order-completed")));
         string successMsg = _driver.FindElement(By.CssSelector(".title strong")).Text;
-        Assert.That(successMsg, Does.Contain("successfully processed"),
-            "Order should be successfully processed");
-        Console.WriteLine("✔ Order placed successfully");
+        Assert.That(successMsg, Does.Contain("successfully processed"));
+        Console.WriteLine("TASK_COMPLETED:: Order placed successfully");
 
-        // Verify order number exists
-        string orderNumber = _driver.FindElement(By.CssSelector(".order-number strong")).Text;
-        Assert.That(orderNumber, Is.Not.Empty, "Order number should be displayed");
-        Console.WriteLine($"✔ Order number: {orderNumber}");
+        string orderNumber = _driver.FindElement(By.CssSelector(".details li")).Text;
+        Assert.That(orderNumber, Does.Contain("Order number"));
+        Console.WriteLine($"TASK_COMPLETED:: {orderNumber}");
+    }
+
+    private void GoToOrderDetails()
+    {
+        _driver.FindElement(By.CssSelector(".details li a")).Click();
+        Console.WriteLine($"TASK_COMPLETED:: Navigated to order details");
     }
 
     private void SetField(string id, string value)

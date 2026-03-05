@@ -44,21 +44,28 @@ public class TestClass : BaseTest
     {
         LoginTest();
 
+        Console.WriteLine("========================================");
         _productBrowsing = new(driver);
-        _shoppingChartVerifications = new(driver);
-        _checkout = new(driver);
-
         _productBrowsing.Test();
+    }
+
+    [Test]
+    public void CartTest()
+    {
+        BrowsingTest();
 
         Console.WriteLine("========================================");
-
+        _shoppingChartVerifications = new(driver);
         _shoppingChartVerifications.Navigate();
         _shoppingChartVerifications.Verify();
+    }
 
+    [Test]
+    public void CheckoutTest()
+    {
+        CartTest();
         Console.WriteLine("========================================");
-
+        _checkout = new(driver);
         _checkout.Test();
-
-        Console.WriteLine("========================================");
     }
 }
