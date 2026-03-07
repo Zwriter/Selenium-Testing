@@ -3,12 +3,12 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-public class PaginationTest
+public class Pagination
 {
     private IWebDriver _driver;
     private int _numberOfElements;
 
-    public PaginationTest(IWebDriver driver, int elements)
+    public Pagination(IWebDriver driver, int elements)
     {
         _driver = driver;
         _numberOfElements = elements;
@@ -54,16 +54,17 @@ public class PaginationTest
         {
             var pageInfo = _driver.FindElement(By.CssSelector("div.col-auto strong")).Text;
             Assert.That(pageInfo, Is.EqualTo("1 of 1"));
-            Console.WriteLine($"Pagination collapsed correctly: {pageInfo}");
+            TestContext.WriteLine($"TASK_COMPLETED:: Pagination collapsed correctly: {pageInfo}");
 
             var rows = _driver.FindElements(By.CssSelector(".rt-tr-group"));
             var found = rows.First(row => row.Text.Contains(FormData.NAME + "1"));
             Assert.That(found, Is.True);
-            Console.WriteLine($"Inserted rows found: {pageInfo}");
+            TestContext.WriteLine($"TASK_COMPLETED:: Inserted rows found: {pageInfo}");
         }
         catch (Exception err)
         {
-            throw new Exception("ERROR: " + err);
+            TestContext.WriteLine("ERROR:: " + err);
+            throw new Exception("ERROR:: " + err);
         }
     }
 }

@@ -176,3 +176,5 @@ D:\Programming\Coding\C#\SeleniumTesting\DemoqaTesting\obj\Debug\net10.0\refint\
 D:\Programming\Coding\C#\SeleniumTesting\DemoqaTesting\obj\Debug\net10.0\DemoqaTesting.pdb
 D:\Programming\Coding\C#\SeleniumTesting\DemoqaTesting\obj\Debug\net10.0\DemoqaTesting.genruntimeconfig.cache
 D:\Programming\Coding\C#\SeleniumTesting\DemoqaTesting\obj\Debug\net10.0\ref\DemoqaTesting.dll
+D:\Programming\Coding\C#\SeleniumTesting\DemoqaTesting\bin\Debug\net10.0\SeleniumExtras.WaitHelpers.dll
+D:\Programming\Coding\C#\SeleniumTesting\DemoqaTesting\obj\Debug\net10.0\DemoqaTesting.sourcelink.json
