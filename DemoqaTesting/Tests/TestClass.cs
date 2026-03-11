@@ -8,7 +8,7 @@ public class TestClass : BaseTest
     ProgressBar? _barTest;
     DynamicDOM? _dynamicTest;
 
-    [Test]
+    [Test, Order(1)]
     public void PaginationTest()
     {
         _paginationTest = new(driver, 8);
@@ -18,7 +18,7 @@ public class TestClass : BaseTest
         _paginationTest.Validate();
     }
 
-    [Test]
+    [Test, Order(2)]
     public void ProgressBarTest()
     {
         _barTest = new(driver);
@@ -26,7 +26,7 @@ public class TestClass : BaseTest
         _barTest.Test();
     }
 
-    [Test]
+    [Test, Order(3)]
     public void DynamicDOMTest()
     {
         _dynamicTest = new(driver);
