@@ -1,0 +1,19 @@
+name: DemoQA Tests
+
+on:
+  schedule:
+    - cron: "0 22 * * *"
+  workflow_dispatch:
+
+jobs:
+  demoqa-tests:
+    name: DemoQA Testing
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "10.0.x"
+      - run: dotnet restore "DemoqaTesting/DemoqaTesting.csproj"
+      - run: dotnet build "DemoqaTesting/DemoqaTesting.csproj" --no-restore
+      - run: dotnet test "DemoqaTesting/DemoqaTesting.csproj" --no-build --verbosity normal
