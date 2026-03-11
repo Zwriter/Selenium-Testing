@@ -28,7 +28,6 @@ public class UserLogIn
         _driver.FindElement(By.Id("RememberMe")).Click();
         _driver.FindElement(By.CssSelector("input[class='button-1 login-button']")).Click();
 
-        //Validation
         var checkEmail = _driver.FindElement(By.CssSelector("a[href='/customer/info']")).Text;
         Assert.That(checkEmail, Is.EqualTo(_email));
         Console.WriteLine($"TASK_COMPLETED:: User Log In successful for {_email}");

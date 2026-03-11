@@ -6,11 +6,13 @@ using SeleniumExtras.WaitHelpers;
 public class Checkout
 {
     private IWebDriver _driver;
+    private TestDataModel _data;
     private WebDriverWait _wait;
 
-    public Checkout(IWebDriver driver)
+    public Checkout(IWebDriver driver, TestDataModel data)
     {
         _driver = driver;
+        _data = data;
         _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
     }
 
@@ -32,11 +34,11 @@ public class Checkout
 
         if (countryField.Count > 0 && countryField[0].Displayed)
         {
-            new SelectElement(countryField[0]).SelectByText(AdressData.COUNTRY);
-            SetField("BillingNewAddress_City", AdressData.CITY);
-            SetField("BillingNewAddress_Address1", AdressData.ADRESS1);
-            SetField("BillingNewAddress_ZipPostalCode", AdressData.ZIP);
-            SetField("BillingNewAddress_PhoneNumber", UserData.PHONENUMBER);
+            new SelectElement(countryField[0]).SelectByText(_data.Country);
+            SetField("BillingNewAddress_City", _data.City);
+            SetField("BillingNewAddress_Address1", _data.Address);
+            SetField("BillingNewAddress_ZipPostalCode", _data.Zip);
+            SetField("BillingNewAddress_PhoneNumber", _data.Phone);
         }
         else
         {
@@ -77,11 +79,11 @@ public class Checkout
         var monthField = _driver.FindElements(By.Id("ExpireMonth"));
         var yearField = _driver.FindElements(By.Id("ExpireYear"));
 
-        SetField("CardholderName", PaymentData.NAME);
-        SetField("CardNumber", PaymentData.CARDNUMBER);
-        SetField("CardCode", PaymentData.CVV);
-        new SelectElement(monthField[0]).SelectByText(PaymentData.EXPIRATIONMONTH);
-        new SelectElement(yearField[0]).SelectByText(PaymentData.EXPIRATIONYEAR);
+        SetField("CardholderName", _data.FirstName + ' ' + _data.LastName);
+        SetField("CardNumber", _data.CardNumber);
+        SetField("CardCode", _data.CardCvv);
+        new SelectElement(monthField[0]).SelectByText(_data.CardExpiryMonth);
+        new SelectElement(yearField[0]).SelectByText(_data.CardExpiryYear);
 
         _driver.FindElement(By.CssSelector("input[onclick='PaymentInfo.save()']")).Click();
 

@@ -1,0 +1,17 @@
+{
+  "gender": "Male",
+  "firstName": "Taranu",
+  "lastName": "Ion",
+  "email": "ion_test004@gmail.com",
+  "password": "Test@1234!",
+  "country": "Romania",
+  "city": "Pitesti",
+  "address": "123 Test Street",
+  "zip": "100010",
+  "phone": "0734312124",
+  "paymentMethod": "CreditCard",
+  "cardNumber": "4111 1111 1111 1111",
+  "cardExpiryMonth": "12",
+  "cardExpiryYear": "2028",
+  "cardCvv": "123"
+}

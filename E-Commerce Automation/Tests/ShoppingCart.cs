@@ -25,20 +25,17 @@ public class ShoppingCart
         Assert.That(cartItems.Count, Is.EqualTo(3));
         Console.WriteLine($"TASK_COMPLETED:: Cart contains {cartItems.Count} items");
 
-        // Verify all items are present
         string cartContent = _driver.FindElement(By.CssSelector(".cart")).Text;
         Assert.That(cartContent, Does.Contain("Fiction"));
         Assert.That(cartContent, Does.Contain("Build your own cheap computer"));
         Assert.That(cartContent, Does.Contain("Blue Jeans"));
         Console.WriteLine("TASK_COMPLETED:: All expected items are present in cart");
 
-        // Verify Blue Jeans quantity is 2
         var blueJeansRow = cartItems.First(row => row.Text.Contains("Blue Jeans"));
         string blueJeansQty = blueJeansRow.FindElement(By.CssSelector(".qty-input")).GetAttribute("value");
         Assert.That(blueJeansQty, Is.EqualTo("2"), "Blue Jeans quantity should be 2");
         Console.WriteLine("TASK_COMPLETED:: Blue Jeans quantity is 2");
 
-        // Verify cart total is correct
         var unitPrices = cartItems.Select(row =>
         {
             string priceText = row.FindElement(By.ClassName("product-unit-price")).Text.Replace("$", "").Trim();
@@ -60,13 +57,11 @@ public class ShoppingCart
         Assert.That(actualTotal, Is.EqualTo(unitPrices).Within(0.01));
         Console.WriteLine($"TASK_COMPLETED:: Cart total ${actualTotal} matches sum of item prices");
 
-        // Remove Blue Jeans by setting quantity to 0
         var blueJeansQtyInput = blueJeansRow.FindElement(By.CssSelector(".qty-input"));
         blueJeansQtyInput.Clear();
         blueJeansQtyInput.SendKeys("0");
         _driver.FindElement(By.Name("updatecart")).Click();
 
-        // Verify Blue Jeans removed
         cartItems = _driver.FindElements(By.CssSelector(".cart-item-row"));
         Assert.That(cartItems.Count, Is.EqualTo(2));
         Console.WriteLine("TASK_COMPLETED:: Blue Jeans removed from cart");

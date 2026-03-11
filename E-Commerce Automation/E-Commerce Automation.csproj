@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="testdata.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
     <PackageReference Include="NUnit" Version="4.5.0" />

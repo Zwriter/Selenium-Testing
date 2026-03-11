@@ -4,18 +4,24 @@ using NUnit.Framework;
 
 public class BaseTest
 {
-    protected IWebDriver? driver;
+    protected ChromeDriver driver = null!;
+    protected TestDataModel testData = null!;
 
     [OneTimeSetUp]
     public void Open()
     {
+        testData = JsonFileLoader.Load<TestDataModel>("testdata.json");
+
         var options = new ChromeOptions();
         options.AddArgument("--ignore-certificate-errors");
         options.AddArgument("--force-device-scale-factor=0.75");
 
         driver = new ChromeDriver(options);
-        driver.Url = "https://demowebshop.tricentis.com/";
         driver.Manage().Window.Maximize();
+        driver.Url = "https://demowebshop.tricentis.com/";
+
+        var preConditions = new PreConditions(driver);
+        preConditions.Verify();
     }
 
     [OneTimeTearDown]
@@ -23,21 +29,8 @@ public class BaseTest
     {
         try
         {
-            string cartText = driver!.FindElement(By.ClassName("cart-qty")).Text;
-            int cartValue = Int32.Parse(cartText.Replace("(", "").Replace(")", "").Trim());
-
-            if (cartValue > 0)
-            {
-                driver.Navigate().GoToUrl("https://demowebshop.tricentis.com/cart");
-                ((IJavaScriptExecutor)driver).ExecuteScript(@"
-                var inputs = document.querySelectorAll('.qty-input');
-                if(inputs.length > 0) {
-                    inputs.forEach(i => i.value = '0');
-                    document.querySelector('[name=""updatecart""]').click();
-                }
-            ");
-                Console.WriteLine("TASK_COMPLETED:: Cleared remaining items");
-            }
+            var postConditions = new PostConditions(driver);
+            postConditions.Verify();
         }
         catch (Exception e)
         {

@@ -28,7 +28,6 @@ public class ProductBrowsing
             By.CssSelector("a[href='/books']")));
         booksMenu.Click();
 
-        // Sort by Price: High to Low
         var products = _driver.FindElements(By.CssSelector(".product-item"));
 
         var sorted = products
@@ -62,7 +61,6 @@ public class ProductBrowsing
         _wait.Until(ExpectedConditions.ElementToBeClickable(
             By.CssSelector("a[href='/desktops']"))).Click();
 
-        /// Filter by price under 1000 and pick the first element that pops up
         var desktops = _driver.FindElements(By.CssSelector(".product-item"));
         var underBudget = desktops
             .Select(p => new
