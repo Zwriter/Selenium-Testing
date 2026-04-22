@@ -41,7 +41,7 @@ public class ShoppingCart
             string priceText = row.FindElement(By.ClassName("product-unit-price")).Text.Replace("$", "").Trim();
             string qtyText = row.FindElement(By.ClassName("qty-input")).GetAttribute("value")?.Trim();
 
-            Console.WriteLine($"DEBUG — price: '{priceText}', qty: '{qtyText}'");
+            //Console.WriteLine($"DEBUG — price: '{priceText}', qty: '{qtyText}'");
 
             if (string.IsNullOrEmpty(priceText) || string.IsNullOrEmpty(qtyText))
                 return 0;

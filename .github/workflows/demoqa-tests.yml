@@ -7,13 +7,16 @@ on:
 
 jobs:
   demoqa-tests:
+    if: vars.RUN_TESTS == 'true'
     name: DemoQA Testing
     runs-on: windows-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "10.0.x"
+
       - run: dotnet restore "DemoqaTesting/DemoqaTesting.csproj"
       - run: dotnet build "DemoqaTesting/DemoqaTesting.csproj" --no-restore
       - run: dotnet test "DemoqaTesting/DemoqaTesting.csproj" --no-build --verbosity normal

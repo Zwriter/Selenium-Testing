@@ -7,13 +7,16 @@ on:
 
 jobs:
   ecommerce-tests:
+    if: vars.RUN_TESTS == 'true'
     name: E-Commerce Automation
     runs-on: windows-latest
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: "10.0.x"
+
       - run: dotnet restore "E-Commerce Automation/E-Commerce Automation.csproj"
       - run: dotnet build "E-Commerce Automation/E-Commerce Automation.csproj" --no-restore
       - run: dotnet test "E-Commerce Automation/E-Commerce Automation.csproj" --no-build --verbosity normal
